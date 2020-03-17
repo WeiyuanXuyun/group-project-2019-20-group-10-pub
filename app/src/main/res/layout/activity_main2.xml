@@ -2,18 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
     android:orientation="vertical">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:text="settings menu"
+        android:text=" home screen"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        />
+    <Button
+        android:id="@+id/back"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="back"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         />
     <LinearLayout
@@ -25,20 +33,20 @@
         >
 
         <Button
-            android:id="@+id/topics"
+            android:id="@+id/select"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:text="Topics"
+            android:text="select app"
             android:textSize="16sp"
             android:gravity="center"
             />
         <Button
-            android:id="@+id/setting"
+            android:id="@+id/timer"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:textSize="16sp"
             android:gravity="center"
-            android:text="Settings"
+            android:text="timer"
             />
     </LinearLayout>
 
