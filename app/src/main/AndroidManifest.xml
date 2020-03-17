@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".settimer"></activity>
+        <activity android:name=".select_Topic" />
+        <activity android:name=".setting_Menu" />
+        <activity android:name=".home_Screen" />
+        <activity android:name=".new_User" />
+        <activity android:name=".login_Screen" />
+        <activity android:name=".settimer" />
         <activity android:name=".topics" />
         <activity android:name=".selectapps" />
-        <activity android:name=".login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
