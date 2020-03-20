@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:text="create account"
+            android:text="@string/create_account"
             android:textSize="18sp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
@@ -34,7 +34,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:hint="username"
+                android:hint="@string/username"
                 android:textSize="16sp"
                 android:gravity=""
                 />
@@ -46,28 +46,42 @@
                 android:layout_marginRight="20dp"
                 android:textSize="16sp"
                 android:gravity=""
-                android:hint="Email address"
+                android:hint="@string/email_address"
                 />
-            <EditText
-                android:id="@+id/ed_pd"
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:hint="password"
-                android:textSize="16sp"
-                android:gravity=""
-                />
-            <EditText
-                android:id="@+id/ed_comfirm_pd"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_pd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textSize="16sp"
-                android:gravity=""
-                android:hint="Confirm password"
-                />
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_confirm_pd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <LinearLayout
@@ -83,7 +97,7 @@
                     android:id="@+id/btn_enter"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
-                    android:text="register"
+                    android:text="@string/register"
                     android:textSize="14sp"
                     android:gravity="center"
                     />

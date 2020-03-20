@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: Register Button Worked");
-                //Intent intent = new Intent(MainActivity.this, register.class);
-                //startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, new_User.class);
+                startActivity(intent);
             }
         });
 
