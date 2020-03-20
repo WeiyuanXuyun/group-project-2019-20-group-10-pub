@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/AndroidStudioProjects-group-project-2019-20-group-10-app.iml" filepath="$PROJECT_DIR$/app/AndroidStudioProjects-group-project-2019-20-group-10-app.iml" group="cs2001_group10/app" />
       <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-group-project-2019-20-group-10-cs2001_group10.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-group-project-2019-20-group-10-cs2001_group10.iml" group="cs2001_group10" />
+      <module fileurl="file://$PROJECT_DIR$/app/Group_10-app.iml" filepath="$PROJECT_DIR$/app/Group_10-app.iml" group="cs2001_group10/app" />
+      <module fileurl="file://$PROJECT_DIR$/Group_10-cs2001_group10.iml" filepath="$PROJECT_DIR$/Group_10-cs2001_group10.iml" group="cs2001_group10" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="cs2001_group10/app" />
       <module fileurl="file://$PROJECT_DIR$/cs2001_group10.iml" filepath="$PROJECT_DIR$/cs2001_group10.iml" group="cs2001_group10" />
       <module fileurl="file://$PROJECT_DIR$/app/group-project-2019-20-group-10-app.iml" filepath="$PROJECT_DIR$/app/group-project-2019-20-group-10-app.iml" group="cs2001_group10/app" />
