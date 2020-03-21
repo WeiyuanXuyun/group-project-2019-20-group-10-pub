@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home_Screen">
+    tools:context=".home_screen">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,6 +44,14 @@
                 android:gravity="center"
                 android:text="Settings"
                 />
+
+            <Button
+                android:id="@+id/popUpTest"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="popup Test"
+                android:textSize="16sp" />
         </LinearLayout>
 
 

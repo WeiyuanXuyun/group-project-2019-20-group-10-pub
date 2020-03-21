@@ -31,6 +31,13 @@ public class home_screen extends AppCompatActivity {
             }
         });
 
+        Button popup_Test = (Button) findViewById(R.id.popUpTest);
+        popup_Test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startService(new Intent(getBaseContext(), popup_Service.class));
+            }
+        });
 
     }
 }
