@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
                             switch (Value) {
                                 case "0":
                                     Toast.makeText(MainActivity.this, "User Login Success", Toast.LENGTH_SHORT).show();
-                                    //Intent  intent = new Intent(MainActivity.this, request.class); < - This goes to the students section
-                                    //startActivity(intent);
+                                    Intent  intent = new Intent(MainActivity.this, home_screen.class); //< - This goes to the students section
+                                    startActivity(intent);
                                     break;
                                 case "1":
                                     Toast.makeText(MainActivity.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
