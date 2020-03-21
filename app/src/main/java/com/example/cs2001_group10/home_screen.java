@@ -12,5 +12,7 @@ public class home_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__screen);
 
+
+
     }
 }
