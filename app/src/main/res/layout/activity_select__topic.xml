@@ -20,7 +20,7 @@
             >
 
             <Button
-                android:id="@+id/btn_five_back"
+                android:id="@+id/back_select_topic"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:gravity="center"
@@ -80,10 +80,12 @@
             android:id="@+id/btn_select"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="659dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginBottom="22dp"
             android:gravity="center"
             android:text="select"
             android:textSize="14sp" />

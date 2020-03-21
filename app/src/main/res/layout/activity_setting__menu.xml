@@ -20,7 +20,7 @@
             android:layout_marginTop="15dp"
             />
         <Button
-            android:id="@+id/back"
+            android:id="@+id/back_settings_menu"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:text="back"
