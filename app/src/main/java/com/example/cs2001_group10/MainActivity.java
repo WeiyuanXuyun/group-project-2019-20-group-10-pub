@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: Login Button Worked");
-                //Check();
-                Intent  intent = new Intent(MainActivity.this, home_screen.class); //< - This goes to the students section
-                startActivity(intent);
+                Check();
+                //Intent  intent = new Intent(MainActivity.this, home_screen.class); //< - This goes to the students section
+                //startActivity(intent);
             }
         });
 
