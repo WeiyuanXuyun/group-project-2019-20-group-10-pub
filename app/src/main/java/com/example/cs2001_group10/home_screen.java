@@ -35,7 +35,8 @@ public class home_screen extends AppCompatActivity {
         popup_Test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startService(new Intent(getBaseContext(), popup_Service.class));
+                Intent popup = new Intent(getBaseContext(), questions.class);
+                startActivity(popup);
             }
         });
 

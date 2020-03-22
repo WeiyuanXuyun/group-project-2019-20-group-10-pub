@@ -18,7 +18,9 @@ public class popup_Service extends Service {
 
         Toast.makeText(this, "Started", Toast.LENGTH_LONG).show();
         //Intent i=getPackageManager().getLaunchIntentForPackage("com.example.cs2001_group10");
-        //startActivity(i);
+        // ^ Opens app if needed.
+        Intent popup = new Intent(getBaseContext(), MainActivity.class);
+        startActivity(popup);
 
         return START_STICKY;
     }
