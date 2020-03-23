@@ -38,7 +38,7 @@ public class questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
-        Log.d(TAG, "onCreate: " + home_screen.Maths_List);
+        Log.d(TAG, "onCreate: " + MainActivity.Maths_List);
         b_ans1 = findViewById(R.id.b_A1);
         b_ans2 = findViewById(R.id.b_A2);
         b_ans3 = findViewById(R.id.b_A3);
@@ -50,7 +50,7 @@ public class questions extends AppCompatActivity {
             Log.d(TAG, "onCreate: boolean check");
             for (int i = 0; i <5; i++){
                 q_Num = i; //Add random num 5 <-
-                maths_Questions.add(Random_Question(home_screen.Maths_List, q_Num));
+                maths_Questions.add(Random_Question(MainActivity.Maths_List, q_Num));
             }
             first_Time = false;
         } else if (current_Question == 4){
@@ -62,7 +62,7 @@ public class questions extends AppCompatActivity {
             Log.d(TAG, "Topic Question: " + maths_Questions);
 
 
-            question.setText(home_screen.Maths_List.get(current_Question));
+            question.setText(MainActivity.Maths_List.get(current_Question));
             GetAnswers(maths_Questions.get(current_Question), Api.URL_MATHS_ANSWERS_REQUEST, "maths_questions");
             current_Question++;
 
@@ -92,7 +92,7 @@ public class questions extends AppCompatActivity {
     }
 
     public void next_Question() {
-        question.setText(home_screen.Maths_List.get(current_Question));
+        question.setText(MainActivity.Maths_List.get(current_Question));
         GetAnswers(maths_Questions.get(current_Question), Api.URL_MATHS_ANSWERS_REQUEST, "maths_questions");
         current_Question++;
     }
@@ -100,8 +100,8 @@ public class questions extends AppCompatActivity {
     // method that gets random question
 
     private String Random_Question(ArrayList<String> maths_List, int q_Num) {
-        Log.d(TAG, "Random_Question: " + home_screen.Maths_List.get(q_Num));
-        return  home_screen.Maths_List.get(q_Num);
+        Log.d(TAG, "Random_Question: " + MainActivity.Maths_List.get(q_Num));
+        return  MainActivity.Maths_List.get(q_Num);
     }
 
     private void GetAnswers(final String question, String URL, final String Array_Name) {

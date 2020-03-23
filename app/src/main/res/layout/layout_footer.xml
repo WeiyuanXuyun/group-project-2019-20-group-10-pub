@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:id="@+id/footer">
+
+    <TextView
+        android:id="@+id/footer_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginBottom="10sp"
+        android:padding="10sp"
+        android:text="@string/add_question"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+</LinearLayout>
+
+
+

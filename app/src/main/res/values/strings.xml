@@ -8,4 +8,17 @@
     <string name="username">Username</string>
     <string name="confirm_password">Confirm password</string>
     <string name="register">Register</string>
+    <string name="python_questions">Python Questions</string>
+    <string name="java_questions">Java Questions</string>
+    <string name="maths_questions">Maths Questions</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="question">Question</string>
+    <string name="correct_answer">Correct Answer</string>
+    <string name="answer_two">Answer Two</string>
+    <string name="answer_one">Answer One</string>
+    <string name="update_question">Update Question</string>
+    <string name="add_question">Add Question</string>
+    <string name="questions">Questions</string>
+    <string name="submit">Submit</string>
 </resources>

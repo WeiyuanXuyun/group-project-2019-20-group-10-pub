@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/login_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100sp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:text="@string/update_question" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100sp"
+        android:paddingStart="50sp"
+        android:paddingEnd="50sp"
+        app:counterEnabled="true"
+        app:counterMaxLength="255">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/question_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/question"
+            android:inputType="textPersonName"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:paddingStart="50sp"
+        android:paddingEnd="50sp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ans_one_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/answer_one"
+            android:inputType="textPersonName"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:paddingStart="50sp"
+        android:paddingEnd="50sp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ans_two_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/answer_two"
+            android:inputType="textPersonName"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:paddingStart="50sp"
+        android:paddingEnd="50sp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/correct_ans_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/correct_answer"
+            android:inputType="textPersonName"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/Button_Update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+
+        android:layout_marginEnd="100sp"
+        android:layout_marginStart="100sp"
+
+        android:layout_marginTop="50sp"
+        android:text="@string/update" />
+
+
+</LinearLayout>

@@ -15,17 +15,25 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    ArrayList<String> Questions = new ArrayList<>();
+    public static ArrayList<String> Maths_List = new ArrayList<>();
+    public static ArrayList<String> Java_List = new ArrayList<>();
+    public static ArrayList<String> Python_List = new ArrayList<>();
+    public static String Array_Name;
 
     private static final String TAG = "Main Activity" ;
     private EditText email, password;
@@ -35,6 +43,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login__screen);
+
+        Array_Name = "maths_questions";
+        Request(Api.URL_MATHS_REQUEST, Array_Name);
+
+        Array_Name = "java_questions";
+        Request(Api.URL_JAVA_REQUEST, Array_Name);
+
+        Array_Name = "python_questions";
+        Request(Api.URL_PYTHON_REQUEST, Array_Name);
+
 
         email = findViewById(R.id.ed_address);
         password = findViewById(R.id.ed_ps);
@@ -101,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
                                     break;
                                 case "3":
                                     Toast.makeText(MainActivity.this, "Admin Login Success", Toast.LENGTH_SHORT).show();
-                                    //intent = new Intent(MainActivity.this, request.class);     < - This goes to the admin section
-                                    //startActivity(intent);
+                                    intent = new Intent(MainActivity.this, admin_request.class);  //   < - This goes to the admin section
+                                    startActivity(intent);
                                     break;
                                 default:
                                     Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -137,4 +155,53 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+
+    private void Request(String URL, final String Array_Name) { // gets table, sets it to maths_questions
+        Log.d(TAG, "Request: Accessed");
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonArray = response.getJSONArray(Array_Name);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject questions = jsonArray.getJSONObject(i);
+                                String question = questions.getString("question");
+
+                                Questions.add(question);
+                            }
+                            Log.d(TAG, "onResponse: " + Questions);
+                            if (Array_Name == "maths_questions") {
+                                Maths_List = (ArrayList<String>) Questions.clone();
+                                Questions.clear();
+                            }
+
+                            if (Array_Name == "java_questions") {
+                                Java_List = (ArrayList<String>) Questions.clone();
+                                Questions.clear();
+                            }
+
+                            if (Array_Name == "python_questions") {
+                                Python_List = (ArrayList<String>) Questions.clone();
+                                Questions.clear();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+    }
+
 }

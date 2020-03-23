@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import java.util.Objects;
 
 public class select_Topic extends AppCompatActivity {
 
+    private static final String TAG = "Select Topic Screen Activity" ;
     ArrayList <String> saved_Topics = new ArrayList<String>();
     Boolean check;
     TextView tv_Example, tv_Description;
@@ -27,6 +29,7 @@ public class select_Topic extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select__topic);
+        Log.d(TAG, "onCreate: Activity Created");
 
         // Setting the descriptions for each topic.
         java_Descript = "Selecting this topic will make Java related questions pop up. An example is:";
@@ -35,14 +38,14 @@ public class select_Topic extends AppCompatActivity {
 
         check = false;
 
+        Log.d(TAG, "Maths List: " + MainActivity.Maths_List);
+        Log.d(TAG, "Java List: " + MainActivity.Java_List);
+        Log.d(TAG, "Python List: " + MainActivity.Python_List);
+
         // Getting an example, to show the user what sort of questions they will the tested on.
-
-
-        // Jamie, change the lists below
-
-        //java_Example = home_screen.Maths_List.get(1); // <- can be randomised if wanted.
-        //python_Example = home_screen.Maths_List.get(1); // <- can be randomised if wanted.
-        math_Example = home_screen.Maths_List.get(1); // <- can be randomised if wanted.
+        java_Example = MainActivity.Java_List.get(1); // <- can be randomised if wanted.
+        python_Example = MainActivity.Python_List.get(1); // <- can be randomised if wanted.
+        math_Example = MainActivity.Maths_List.get(1); // <- can be randomised if wanted.
 
         //Setting the layout ID's
         tv_Example  = findViewById(R.id.tv_Exp);
@@ -87,12 +90,15 @@ public class select_Topic extends AppCompatActivity {
                     if(topic == "Java"){
                         b_Select.setText("Selected");
                         saved_Topics.add(topic);
+                        Log.d(TAG, "Java Selected: " + saved_Topics);
                     }else if(topic == "Python"){
                         b_Select.setText("Selected");
                         saved_Topics.add(topic);
+                        Log.d(TAG, "Python Selected: " + saved_Topics);
                     }else if(topic == "Math"){
                         b_Select.setText("Selected");
                         saved_Topics.add(topic);
+                        Log.d(TAG, "Maths Selected: " + saved_Topics);
                     }
                 } else { // if the text dose not = 'Select' it removes the topic
                     for (i = 0; i<saved_Topics.size(); i++){
