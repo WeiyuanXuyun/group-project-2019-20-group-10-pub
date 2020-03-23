@@ -16,7 +16,6 @@ import java.util.Objects;
 public class select_Topic extends AppCompatActivity {
 
     private static final String TAG = "Select Topic Screen Activity" ;
-    ArrayList <String> saved_Topics = new ArrayList<String>();
     Boolean check;
     TextView tv_Example, tv_Description;
     String java_Descript, python_Descript, math_Descript; // Creating the description variables.
@@ -68,8 +67,8 @@ public class select_Topic extends AppCompatActivity {
         }
 
         // Checks if topic has been already been selected.
-        for (i = 0; i <saved_Topics.size(); i++){
-            if (saved_Topics.get(i) == topic){
+        for (i = 0; i <MainActivity.saved_Topics.size(); i++){
+            if (MainActivity.saved_Topics.get(i) == topic){
                 b_Select.setText("Selected");
                 check = true;
                 break;
@@ -89,21 +88,21 @@ public class select_Topic extends AppCompatActivity {
                 if (b_Select.getText() == "Select"){
                     if(topic == "Java"){
                         b_Select.setText("Selected");
-                        saved_Topics.add(topic);
-                        Log.d(TAG, "Java Selected: " + saved_Topics);
+                        MainActivity.saved_Topics.add(topic);
+                        Log.d(TAG, "Java Selected: " + MainActivity.saved_Topics);
                     }else if(topic == "Python"){
                         b_Select.setText("Selected");
-                        saved_Topics.add(topic);
-                        Log.d(TAG, "Python Selected: " + saved_Topics);
+                        MainActivity.saved_Topics.add(topic);
+                        Log.d(TAG, "Python Selected: " + MainActivity.saved_Topics);
                     }else if(topic == "Math"){
                         b_Select.setText("Selected");
-                        saved_Topics.add(topic);
-                        Log.d(TAG, "Maths Selected: " + saved_Topics);
+                        MainActivity.saved_Topics.add(topic);
+                        Log.d(TAG, "Maths Selected: " + MainActivity.saved_Topics);
                     }
                 } else { // if the text dose not = 'Select' it removes the topic
-                    for (i = 0; i<saved_Topics.size(); i++){
-                        if (saved_Topics.get(i) == topic){
-                            saved_Topics.remove(i);
+                    for (i = 0; i<MainActivity.saved_Topics.size(); i++){
+                        if (MainActivity.saved_Topics.get(i) == topic){
+                            MainActivity.saved_Topics.remove(i);
                             b_Select.setText("Select");
                         }
                     }

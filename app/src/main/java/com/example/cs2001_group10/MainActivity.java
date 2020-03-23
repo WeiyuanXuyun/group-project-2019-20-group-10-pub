@@ -29,6 +29,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static ArrayList<String> saved_Topics = new ArrayList<>();
     ArrayList<String> Questions = new ArrayList<>();
     public static ArrayList<String> Maths_List = new ArrayList<>();
     public static ArrayList<String> Java_List = new ArrayList<>();
