@@ -22,19 +22,23 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 public class questions extends AppCompatActivity {
+
     private static final String TAG = "Questions Screen Activity" ;
     ArrayList<String> maths_Questions = new ArrayList<>();
     ArrayList<String> list_Topics = new ArrayList<>();
+    ArrayList<Button> rand_Buttons = new ArrayList<>();
+    ArrayList<String> rand_Results = new ArrayList<>();
+
     private TextView question;
     private String ans_result, ans_two_result, correct_ans_result;
     private Button b_ans1, b_ans2, b_ans3;
-    private Boolean first_Time =true;
-    private int q_Num, current_Question = 0;
+    private int current_Question = 0;
     Random rand_Int = new Random();
     int i, rand_Topic, rand_Question;
 
@@ -51,14 +55,16 @@ public class questions extends AppCompatActivity {
         b_ans3 = findViewById(R.id.b_A3);
         question = findViewById(R.id.t_Question);
 
-        for(i = 0; i < 5; i++){
+        for(i = 0; i < 5; i++){ // change number for more or less questions being asked.
 
             //Gets a random ints
             rand_Topic = rand_Int.nextInt(MainActivity.saved_Topics.size());
             rand_Question = rand_Int.nextInt(MainActivity.Maths_List.size());
 
+            // gets a random topic, and saves it to a local arraylist.
             list_Topics.add(MainActivity.saved_Topics.get(rand_Topic));
 
+            // depending on topic, gets a random question.
             if (list_Topics.get(i) == "Java"){
                 maths_Questions.add(MainActivity.Java_List.get(rand_Question));
             }else if (list_Topics.get(i) == "Maths"){
@@ -71,12 +77,6 @@ public class questions extends AppCompatActivity {
 
         Log.d(TAG, "Topic Question: " + list_Topics);
 
-        //* Adds questions to an Array.
-        //for (int i = 0; i <5; i++){
-         //   q_Num = i; //Add random num 5 <-
-        //    maths_Questions.add(MainActivity.Maths_List.get(q_Num)); //Gets a random element from an Array.
-        //}
-
         Log.d(TAG, "Topic Question: " + maths_Questions);
 
         // Displays the first question and answers.
@@ -85,11 +85,8 @@ public class questions extends AppCompatActivity {
         b_ans1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(current_Question == 4){
-                    startActivity(new Intent(questions.this,home_screen.class));
-                }
-                Toast.makeText(questions.this, "incorrect", Toast.LENGTH_SHORT).show();
-                next_Question();
+
+                ans_Check(b_ans3);
             }
         });
 
@@ -97,12 +94,7 @@ public class questions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(current_Question == 4){
-                    startActivity(new Intent(questions.this,home_screen.class));
-                }
-
-                Toast.makeText(questions.this, "incorrect", Toast.LENGTH_SHORT).show();
-                next_Question();
+                ans_Check(b_ans2);
             }
         });
 
@@ -110,11 +102,7 @@ public class questions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(current_Question == 4){
-                    startActivity(new Intent(questions.this,home_screen.class));
-                }
-                Toast.makeText(questions.this, "correct", Toast.LENGTH_SHORT).show();
-                next_Question();
+                ans_Check(b_ans3);
             }
         });
     }
@@ -147,14 +135,31 @@ public class questions extends AppCompatActivity {
                             Log.d(TAG, "onResponse: " + jsonObject);
                             JSONArray Array = jsonObject.getJSONArray(Array_Name);
 
-                            b_ans1.setText(Array.getJSONObject(0).getString("answer"));
+                            //Gets answers from specified table and saves it to variables
                             ans_result = Array.getJSONObject(0).getString("answer");
-                            b_ans2.setText(Array.getJSONObject(0).getString("answer_2"));
                             ans_two_result = Array.getJSONObject(0).getString("answer_2");
-                            b_ans3.setText(Array.getJSONObject(0).getString("correct_answer"));
                             correct_ans_result = Array.getJSONObject(0).getString("correct_answer");
 
-                            Log.d(TAG, "onResponse: answers" + ans_result + " " + ans_two_result + " " + correct_ans_result);
+                            //Makes index:0-2 equal to answer buttons and then shuffles the arrayList.
+                            rand_Buttons.clear();
+                            rand_Buttons.add(0, b_ans1);
+                            rand_Buttons.add(1,b_ans2);
+                            rand_Buttons.add(2, b_ans3);
+                            Collections.shuffle(rand_Buttons);
+
+                            //Adds results to an arrayList and then shuffles it.
+                            rand_Results.clear();
+                            rand_Results.add(0, ans_result);
+                            rand_Results.add(1, ans_two_result);
+                            rand_Results.add(2, correct_ans_result);
+                            Collections.shuffle((rand_Results));
+
+                            //Sets the random sequence of buttons text to equal the random sequence of results
+                            for(i = 0; i <3; i++){
+                                rand_Buttons.get(i).setText(rand_Results.get(i));
+                            }
+
+                                Log.d(TAG, "onResponse: answers" + ans_result + " " + ans_two_result + " " + correct_ans_result);
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -181,4 +186,18 @@ public class questions extends AppCompatActivity {
 
     }
 
+    //Check to see if the selected answer is correct.
+    private void ans_Check(Button ans_Button) {
+
+        if(ans_Button.getText() == correct_ans_result){
+            Toast.makeText(questions.this, "Correct", Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(questions.this, "incorrect", Toast.LENGTH_SHORT).show();
+        }
+        if(current_Question == 4){
+            startActivity(new Intent(questions.this,home_screen.class));
+        } else{
+            next_Question();
+        }
+    }
 }
