@@ -15,6 +15,8 @@ class Api {
     static final String URL_REGISTER = ROOT_URL + "Register";
     static final String URL_LOGIN_USER = ROOT_URL + "Login";
     static final String URL_DELETE = ROOT_URL + "Delete";
+    static final String URL_GET_TOPICS = ROOT_URL + "User_Topics";
+    static final String URL_UPDATE_TOPICS = ROOT_URL + "Update_Topics";
 
 
 }

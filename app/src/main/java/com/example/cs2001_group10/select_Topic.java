@@ -10,7 +10,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class select_Topic extends AppCompatActivity {
@@ -60,10 +71,10 @@ public class select_Topic extends AppCompatActivity {
             tv_Example.setText(python_Example);
             tv_Description.setText(python_Descript);
             topic = "Python";
-        }else if(Objects.equals(getIntent().getStringExtra("Topic"), "Math")){
+        }else if(Objects.equals(getIntent().getStringExtra("Topic"), "Maths")){
             tv_Example.setText(math_Example);
             tv_Description.setText(math_Descript);
-            topic = "Math";
+            topic = "Maths";
         }
 
         // Checks if topic has been already been selected.
@@ -88,26 +99,34 @@ public class select_Topic extends AppCompatActivity {
                 if (b_Select.getText() == "Select"){
                     if(topic == "Java"){
                         b_Select.setText("Selected");
-                        MainActivity.saved_Topics.add(topic);
+                        //MainActivity.saved_Topics.add(topic); // change to add ot o database
+                        Update_Topic(topic, "1");
                         Log.d(TAG, "Java Selected: " + MainActivity.saved_Topics);
                     }else if(topic == "Python"){
                         b_Select.setText("Selected");
-                        MainActivity.saved_Topics.add(topic);
+                        //MainActivity.saved_Topics.add(topic);
+                        Update_Topic(topic, "1");
                         Log.d(TAG, "Python Selected: " + MainActivity.saved_Topics);
-                    }else if(topic == "Math"){
+                    }else if(topic == "Maths"){
                         b_Select.setText("Selected");
-                        MainActivity.saved_Topics.add(topic);
+                        //MainActivity.saved_Topics.add(topic);
+                        Update_Topic(topic, "1");
                         Log.d(TAG, "Maths Selected: " + MainActivity.saved_Topics);
                     }
                 } else { // if the text dose not = 'Select' it removes the topic
                     for (i = 0; i<MainActivity.saved_Topics.size(); i++){
                         if (MainActivity.saved_Topics.get(i) == topic){
-                            MainActivity.saved_Topics.remove(i);
+                            Update_Topic(topic, "0");
+                            //MainActivity.saved_Topics.remove(i);  // change to remove from dataabase
                             b_Select.setText("Select");
                         }
                     }
                 }
+                //MainActivity object = new MainActivity();
+               // object.Topic_Get();
+
                 }
+
         });
 
         Button back_select_topics = (Button) findViewById(R.id.back_select_topic);
@@ -117,6 +136,61 @@ public class select_Topic extends AppCompatActivity {
                 startActivity(new Intent(select_Topic.this,topics.class));
             }
         });
+
+    }
+
+    private void Update_Topic(final String topic, final String value) {
+        Log.d(TAG, "Update Topic: Accessed");
+        Log.d(TAG, "Update_Topic: Email " + MainActivity.email);
+        Log.d(TAG, "Update_Topic: topic " + topic);
+        Log.d(TAG, "Update_Topic: Value " + value);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Api.URL_UPDATE_TOPICS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            Log.d(TAG, "onResponse: Call " +response);
+                            //JSONObject jsonObject = new JSONObject(response);
+                            //Log.d(TAG, "onResponse: " + jsonObject);
+                            //String Value = jsonObject.getString("value");
+
+                            /**if (Value.equals("0")) {
+                                Toast.makeText(select_Topic.this, "Topic Update Successful", Toast.LENGTH_SHORT).show();
+                                //Intent  intent = new Intent(admin_update_question.this, admin_request.class);
+                                //startActivity(intent);
+                            } else {
+                                Toast.makeText(select_Topic.this, "Update Failed", Toast.LENGTH_SHORT).show();
+                            }**/
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("topic", topic);
+                params.put("email", MainActivity.email);
+                params.put("value", value);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+
 
     }
 }

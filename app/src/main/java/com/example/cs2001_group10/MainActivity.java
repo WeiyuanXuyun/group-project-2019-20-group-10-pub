@@ -2,6 +2,7 @@ package com.example.cs2001_group10;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +30,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static ArrayList<String> saved_Topics = new ArrayList<>();
+    public static ArrayList<String> saved_Topics = new ArrayList<>(); // put topics into this
     ArrayList<String> Questions = new ArrayList<>();
     public static ArrayList<String> Maths_List = new ArrayList<>();
     public static ArrayList<String> Java_List = new ArrayList<>();
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     public static String Array_Name;
 
     private static final String TAG = "Main Activity" ;
-    private EditText email, password;
-
+    private EditText email_box, password;
+    public static String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         Request(Api.URL_PYTHON_REQUEST, Array_Name);
 
 
-        email = findViewById(R.id.ed_address);
+        email_box = findViewById(R.id.ed_address);
         password = findViewById(R.id.ed_ps);
 
         Button button_register = findViewById(R.id.btn_register);
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Check() {
-        final String email = this.email.getText().toString().trim();
+        email = this.email_box.getText().toString().trim();
         final String password = this.password.getText().toString().trim();
 
         if (email.matches("")) {
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
                             switch (Value) {
                                 case "0":
+                                    Get_Topics(email, Api.URL_GET_TOPICS);
                                     Toast.makeText(MainActivity.this, "User Login Success", Toast.LENGTH_SHORT).show();
                                     Intent  intent = new Intent(MainActivity.this, home_screen.class); //< - This goes to the students section
                                     startActivity(intent);
@@ -203,6 +205,65 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
+    }
+
+    public void Topic_Get() {
+        Get_Topics(email, Api.URL_GET_TOPICS);
+    }
+
+
+    public void Get_Topics(final String email, String URL) {
+        Log.d(TAG, "Get Answers: Accessed");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Log.d(TAG, "onResponse: " + jsonObject);
+                            JSONArray Array = jsonObject.getJSONArray("topics");
+
+                            int maths_result = Array.getJSONObject(0).getInt("maths");
+                            int java_result = Array.getJSONObject(0).getInt("java");
+                            int python_result = Array.getJSONObject(0).getInt("python");
+
+                            if (maths_result == 1) {
+                                saved_Topics.add("Maths");
+                            }
+                            if (java_result == 1) {
+                                saved_Topics.add("Java");
+                            }
+                            if (python_result == 1) {
+                                saved_Topics.add("Python");
+                            }
+
+                            Log.d(TAG, "onResponse: maths value: " + maths_result + " java value: " + java_result + " python value: " + python_result);
+                            Log.d(TAG, "onResponse: Saved Topics" + saved_Topics);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
     }
 
 }

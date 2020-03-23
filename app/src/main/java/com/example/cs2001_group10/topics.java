@@ -17,6 +17,8 @@ public class topics extends AppCompatActivity {
         final Intent open_Topic_Detail = new Intent(topics.this, select_Topic.class);
 
 
+
+
         Button b_Java = (Button) findViewById(R.id.b_Java);
         b_Java.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +43,7 @@ public class topics extends AppCompatActivity {
         b_Math.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                topic = "Math";//Setting the selected topic
+                topic = "Maths";//Setting the selected topic
                 open_Topic_Detail.putExtra("Topic", topic);// Used to send the selected tpoic to the next screen
                 startActivity(open_Topic_Detail);
             }

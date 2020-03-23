@@ -61,7 +61,7 @@ public class questions extends AppCompatActivity {
 
             if (list_Topics.get(i) == "Java"){
                 maths_Questions.add(MainActivity.Java_List.get(rand_Question));
-            }else if (list_Topics.get(i) == "Math"){
+            }else if (list_Topics.get(i) == "Maths"){
                 maths_Questions.add(MainActivity.Maths_List.get(rand_Question));
             }else if (list_Topics.get(i) == "Python"){
                 maths_Questions.add(MainActivity.Python_List.get(rand_Question));
@@ -127,7 +127,7 @@ public class questions extends AppCompatActivity {
             GetAnswers(maths_Questions.get(current_Question), Api.URL_JAVA_ANSWERS_REQUEST, "java_questions");// Runs method to display answers for java
         } else if(list_Topics.get(current_Question) == "Python") {
             GetAnswers(maths_Questions.get(current_Question), Api.URL_PYTHON_ANSWERS_REQUEST, "python_questions");// Runs method to display answers for python
-        } else if(list_Topics.get(current_Question) == "Math") {
+        } else if(list_Topics.get(current_Question) == "Maths") {
             GetAnswers(maths_Questions.get(current_Question), Api.URL_MATHS_ANSWERS_REQUEST, "maths_questions");// Runs method to display maths
         }
 

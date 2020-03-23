@@ -76,6 +76,7 @@ public class new_User extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            Log.d(TAG, "onResponse: " + response);
                             JSONObject jsonObject = new JSONObject(response);
                             Log.d(TAG, "onResponse: " + jsonObject);
                             String Value = jsonObject.getString("value");
