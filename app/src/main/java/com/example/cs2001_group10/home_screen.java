@@ -71,7 +71,7 @@ public class home_screen extends AppCompatActivity {
     }
 
 
-    private void Request(String URL, final String Array_Name) {
+    private void Request(String URL, final String Array_Name) { // gets table, sets it to maths_questions
         Log.d(TAG, "Request: Accessed");
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,

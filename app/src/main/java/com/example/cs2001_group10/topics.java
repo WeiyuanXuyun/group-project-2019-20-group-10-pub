@@ -8,34 +8,47 @@ import android.view.View;
 import android.widget.Button;
 
 public class topics extends AppCompatActivity {
+    String topic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topics);
-        Button java_button = (Button) findViewById(R.id.java_question);
-        java_button.setOnClickListener(new View.OnClickListener() {
+        final Intent open_Topic_Detail = new Intent(topics.this, select_Topic.class);
+
+
+        Button b_Java = (Button) findViewById(R.id.b_Java);
+        b_Java.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(topics.this,select_Topic.class));
+                topic = "Java"; //Setting the selected topic
+                open_Topic_Detail.putExtra("Topic", topic); // Used to send the selected tpoic to the next screen
+                startActivity(open_Topic_Detail);
             }
         });
-        Button algebra_button = (Button) findViewById(R.id.algebra);
-        algebra_button.setOnClickListener(new View.OnClickListener() {
+
+        Button b_Python = (Button) findViewById(R.id.b_Python);
+        b_Python.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(topics.this,select_Topic.class));
+                topic = "Python";//Setting the selected topic
+                open_Topic_Detail.putExtra("Topic", topic);// Used to send the selected tpoic to the next screen
+                startActivity(open_Topic_Detail);
             }
         });
-        Button chemistry_button = (Button) findViewById(R.id.chemistry);
-        chemistry_button.setOnClickListener(new View.OnClickListener() {
+
+        Button b_Math = (Button) findViewById(R.id.b_Math);
+        b_Math.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(topics.this,select_Topic.class));
+                topic = "Math";//Setting the selected topic
+                open_Topic_Detail.putExtra("Topic", topic);// Used to send the selected tpoic to the next screen
+                startActivity(open_Topic_Detail);
             }
         });
-        Button back_topics_btn = (Button) findViewById(R.id.back_topics);
-        back_topics_btn.setOnClickListener(new View.OnClickListener() {
+
+        Button b_Back = (Button) findViewById(R.id.back_topics);
+        b_Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(topics.this,home_screen.class));

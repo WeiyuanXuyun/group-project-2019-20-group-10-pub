@@ -46,7 +46,7 @@ public class questions extends AppCompatActivity {
 
 
 
-        if (first_Time == true){
+        if (first_Time == true){ // check to see if its the first time
             Log.d(TAG, "onCreate: boolean check");
             for (int i = 0; i <5; i++){
                 q_Num = i; //Add random num 5 <-
@@ -56,6 +56,7 @@ public class questions extends AppCompatActivity {
         } else if (current_Question == 4){
             first_Time = true;
             current_Question = 0;
+            q_Num = 0;
         }
 
             Log.d(TAG, "Topic Question: " + maths_Questions);
