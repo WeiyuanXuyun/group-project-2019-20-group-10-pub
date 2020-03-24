@@ -21,4 +21,9 @@
     <string name="add_question">Add Question</string>
     <string name="questions">Questions</string>
     <string name="submit">Submit</string>
+    <string name="Select">Select</string>
+    <string name="Selected">Selected</string>
+    <string name="back">back</string>
+    <string name="describe">describe</string>
+    <string name="example">Example</string>
 </resources>

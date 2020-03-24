@@ -207,10 +207,6 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    public void Topic_Get() {
-        Get_Topics(email, Api.URL_GET_TOPICS);
-    }
-
 
     public void Get_Topics(final String email, String URL) {
         Log.d(TAG, "Get Answers: Accessed");
@@ -220,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            Log.d(TAG, "onResponse: Reponse " + response);
                             JSONObject jsonObject = new JSONObject(response);
                             Log.d(TAG, "onResponse: " + jsonObject);
                             JSONArray Array = jsonObject.getJSONArray("topics");
