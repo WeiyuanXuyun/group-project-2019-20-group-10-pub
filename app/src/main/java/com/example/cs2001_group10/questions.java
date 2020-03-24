@@ -86,7 +86,7 @@ public class questions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ans_Check(b_ans3);
+                ans_Check(b_ans1);
             }
         });
 
