@@ -37,7 +37,7 @@ public class questions extends AppCompatActivity {
 
     private TextView question;
     private String ans_result, ans_two_result, correct_ans_result;
-    private Button b_ans1, b_ans2, b_ans3;
+    private Button b_ans1, b_ans2, b_ans3, b_sco;
     private int current_Question = 0;
     Random rand_Int = new Random();
     int i, rand_Topic, rand_Question;
@@ -53,7 +53,15 @@ public class questions extends AppCompatActivity {
         b_ans1 = findViewById(R.id.b_A1);
         b_ans2 = findViewById(R.id.b_A2);
         b_ans3 = findViewById(R.id.b_A3);
+        b_sco = findViewById(R.id.b_score);
         question = findViewById(R.id.t_Question);
+
+        if(MainActivity.score >=5){
+            b_sco.setText("Skip Questions");
+        }else{
+            b_sco.setText("Need more points");
+        }
+
 
         for(i = 0; i < 5; i++){ // change number for more or less questions being asked.
 
@@ -103,6 +111,19 @@ public class questions extends AppCompatActivity {
             public void onClick(View v) {
 
                 ans_Check(b_ans3);
+            }
+        });
+
+        b_sco.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                if(MainActivity.score>=5){
+                    MainActivity.score -= 5;
+                    Toast.makeText(questions.this,"Questions skipped, 5 points used", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(questions.this,home_screen.class));
+
+                }
             }
         });
     }
@@ -189,8 +210,15 @@ public class questions extends AppCompatActivity {
     //Check to see if the selected answer is correct.
     private void ans_Check(Button ans_Button) {
 
+        if(MainActivity.score >=5){
+            b_sco.setText("Skip Questions");
+        }else{
+            b_sco.setText("Need more points");
+        }
+
         if(ans_Button.getText() == correct_ans_result){
             Toast.makeText(questions.this, "Correct", Toast.LENGTH_SHORT).show();
+            MainActivity.score++;
         } else{
             Toast.makeText(questions.this, "incorrect", Toast.LENGTH_SHORT).show();
         }

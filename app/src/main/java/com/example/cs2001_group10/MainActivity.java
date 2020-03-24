@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<String> saved_Topics = new ArrayList<>(); // put topics into this
     ArrayList<String> Questions = new ArrayList<>();
     public static ArrayList<String> Maths_List = new ArrayList<>();
+    public static int score;
     public static ArrayList<String> Java_List = new ArrayList<>();
     public static ArrayList<String> Python_List = new ArrayList<>();
     public static String Array_Name;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login__screen);
+
+        score = 0;
 
         Array_Name = "maths_questions";
         Request(Api.URL_MATHS_REQUEST, Array_Name);
