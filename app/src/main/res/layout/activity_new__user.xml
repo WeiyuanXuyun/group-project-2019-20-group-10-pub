@@ -7,53 +7,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".new_User">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="-57dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:text="@string/create_account"
-            android:textSize="18sp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:text="@string/create_account"
+            android:textSize="18sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
             android:layout_centerInParent="true"
-            >
+            android:gravity="center"
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/ed_userName"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="378dp"
+                android:layout_height="72dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:hint="@string/username"
-                android:textSize="16sp"
                 android:gravity=""
-                />
+                android:hint="@string/username"
+                android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/ed_email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="380dp"
+                android:layout_height="72dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textSize="16sp"
                 android:gravity=""
                 android:hint="@string/email_address"
-                />
+                android:textSize="16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="76dp"
                 android:paddingStart="20sp"
                 android:paddingEnd="20sp"
                 app:passwordToggleEnabled="true"
@@ -61,16 +62,16 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ed_pd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="378dp"
+                    android:layout_height="57dp"
                     android:hint="@string/password"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingStart="20sp"
                 android:paddingEnd="20sp"
                 app:passwordToggleEnabled="true"
@@ -78,10 +79,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ed_confirm_pd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="378dp"
+                    android:layout_height="71dp"
                     android:hint="@string/confirm_password"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,20 +90,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginTop="30dp"
                 android:layout_centerInParent="true"
-                >
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btn_enter"
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
-                    android:text="@string/register"
-                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
                     android:gravity="center"
-                    />
+                    android:text="@string/register"
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
 
